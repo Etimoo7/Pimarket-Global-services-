@@ -1,1 +1,30 @@
 
+<script>
+const PIMARKET_API =
+  "https://script.google.com/macros/s/AKfycbx1DwZFhc-ebajFq2CTpYR8KykKmYbNF2HbcbdgnRTUxghw5Rc9ZBrFKxatpIDcU9BY/exec";
+
+// Test the backend connection
+async function testPiMarketBackend() {
+  try {
+    const response = await fetch(PIMARKET_API);
+    const result = await response.text();
+
+    console.log("PiMarket backend response:", result);
+
+    return {
+      success: response.ok,
+      data: result
+    };
+  } catch (error) {
+    console.error("Backend connection error:", error);
+
+    return {
+      success: false,
+      error: error.message
+    };
+  }
+}
+
+// Run the connection test
+testPiMarketBackend();
+</script>
